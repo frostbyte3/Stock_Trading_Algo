@@ -215,4 +215,5 @@ def main():
             done = now.strftime('%Y-%m-%d')
             logger.info(f'done for {done}')
 
+        logger.info(f' done for {now}')
         time.sleep(1)
