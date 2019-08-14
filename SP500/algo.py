@@ -201,9 +201,14 @@ def main():
     while True:
         # clock API returns the server time including
         # the boolean flag for market open
-        clock = api.get_clock()
-        now = clock.timestamp
-        if clock.is_open and done != now.strftime('%Y-%m-%d'):
+        didErr = False
+        try:
+            clock = api.get_clock()
+            now = clock.timestamp
+        except:
+            logger.info('Error in last request.')
+            didErr = True
+        if (not didErr) and clock.is_open and done != now.strftime('%Y-%m-%d'):
 
             price_df = prices(Universe)
             orders = get_orders(api, price_df)
