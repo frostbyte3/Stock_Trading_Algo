@@ -9,11 +9,12 @@ from .env import getEnv
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG)
 
+
 NY = 'America/New_York'
 api = tradeapi.REST(
-    key_id=getEnv('APCA_API_KEY_ID'),
-    secret_key=getEnv('APCA_API_SECRET_KEY'),
-    base_url=getEnv('APCA_API_BASE_URL')
+    key_id=getEnv('key_id'),
+    secret_key=getEnv('secret_key'),
+    base_url=getEnv('base_url')
 )
 
 

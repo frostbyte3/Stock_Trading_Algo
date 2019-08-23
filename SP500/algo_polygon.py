@@ -5,15 +5,17 @@ import logging
 import concurrent.futures
 
 from .universe import Universe
+from .env import getEnv
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG)
 
 NY = 'America/New_York'
 api = tradeapi.REST(
-    key_id='PKXBT1FT3YRR0PAMEXSL',
-    secret_key='sg5BIXROQxbXdHNa1qKsQAr952xGDlNib9IkgaSA',
-    base_url='https://paper-api.alpaca.markets')
+    key_id=getEnv('key_id'),
+    secret_key=getEnv('secret_key'),
+    base_url=getEnv('base_url')
+)
 
 
 def _dry_run_submit(*args, **kwargs):
