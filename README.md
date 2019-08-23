@@ -12,9 +12,9 @@ the belief is that the price should be recovered to some extent.
 
 Set up your API key in environment variables first.
 
-Create a file in /SP500 named .env
+Create a file in the root directory named .env
 
-Write the following: (replace xxx,yyy,zzz with your keys and desired URI)
+Write the following: (replace xxx,yyy,zzz with your keys and desired URL)
 ```
 APCA_API_KEY_ID=xxx
 APCA_API_SECRET_KEY=yyy
