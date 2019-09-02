@@ -212,7 +212,7 @@ def main():
         except:
             logger.info('Error in last request.')
             didErr = True
-        if (not didErr) and clock.is_open and done != now.strftime('%Y-%m-%d'):
+        if (not didErr) and clock.is_open and done != now.strftime('%Y-%m-%d-%-H'):
 
             price_df = prices(Universe)
             orders = get_orders(api, price_df)
@@ -221,7 +221,7 @@ def main():
             # flag it as done so it doesn't work again for the day
             # TODO: this isn't tolerant to process restarts, so this
             # flag should probably be saved on disk
-            done = now.strftime('%Y-%m-%d')
+            done = now.strftime('%Y-%m-%d-%-H')
             logger.info(f'done for {done}')
 
         logger.info(f' done for {now}')
