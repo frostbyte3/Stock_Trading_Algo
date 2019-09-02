@@ -1,5 +1,5 @@
 from SP500 import algo, btest
 
 if __name__ == '__main__':
-    #btest.simulate()
-    algo.main()
+    btest.simulate()
+    #algo.main()

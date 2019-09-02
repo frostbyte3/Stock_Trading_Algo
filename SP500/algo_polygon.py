@@ -111,6 +111,8 @@ def get_orders(api, price_map, position_size=100, max_positions=5):
     # portfolio, sell it
     for symbol in to_sell:
         shares = holdings[symbol].qty
+        print(holdings[symbol])
+        #f float(holdings[symbol].unrealized_intraday_pl) > 3:
         orders.append({
             'symbol': symbol,
             'qty': shares,
@@ -135,6 +137,7 @@ def get_orders(api, price_map, position_size=100, max_positions=5):
         })
         logger.info(f'order(buy): {symbol} for {shares}')
         max_to_buy -= 1
+    logger.info(f'Current Standings: {account.performance}')
     return orders
 
 
@@ -206,13 +209,13 @@ def main():
         # the boolean flag for market open
         clock = api.get_clock()
         now = clock.timestamp
-        if clock.is_open and done != now.strftime('%Y-%m-%d'):
+        if clock.is_open and done != now.strftime('%Y-%m-%d-%-H'):
             price_map = prices(Universe)
             orders = get_orders(api, price_map)
             trade(orders)
             # flag it as done so it doesn't work again for the day
             # TODO: this isn't tolerant to the process restart
-            done = now.strftime('%Y-%m-%d')
+            done = now.strftime('%Y-%m-%d-%-H')
             logger.info(f'done for {done}')
 
         time.sleep(1)

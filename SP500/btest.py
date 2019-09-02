@@ -105,8 +105,8 @@ class SimulationAPI(object):
         ]
 
 
-def simulate(days=10, equity=500, position_size=100,
-             max_positions=5, bench='SPY'):
+def simulate(days=10, equity=3000, position_size=100,
+             max_positions=50, bench='SPY'):
     '''
     equity: the initial dollar
     position_size: the dollar amount to spend for each position
