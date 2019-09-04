@@ -111,8 +111,8 @@ def get_orders(api, price_df, position_size=100, max_positions=5):
     # portfolio, sell it
     for symbol in to_sell:
         shares = holdings[symbol].qty
-        pl = holdings[symbol].unrealized_intraday_pl
-        price = holdings[symbol].current_price
+        pl = float(holdings[symbol].unrealized_intraday_pl)
+        price = float(holdings[symbol].current_price)
         if(pl > (0.03 * price) or pl < (0.08 * price)):
                 orders.append({
                     'symbol': symbol,
